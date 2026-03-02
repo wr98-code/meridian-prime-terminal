@@ -218,7 +218,7 @@ const Staking = memo(() => {
             apyBase:   p.apyBase ?? 0,
             apyReward: p.apyReward ?? 0,
             type,
-            pegRatio:  type === 'liquid' ? (0.98 + Math.random() * 0.04) : null, // approx from price data
+            pegRatio:  null, // DeFiLlama yields API does not expose peg ratio — shown as N/A
           };
         })
         .sort((a, b) => b.tvlUsd - a.tvlUsd);
