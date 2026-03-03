@@ -3,26 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#0f28b4" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ZM Terminal" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+
+    <!-- SEO -->
     <title>ZERØ MERIDIAN — Crypto Intelligence Terminal</title>
-    <meta name="description" content="Institutional-grade crypto intelligence and trading terminal. Real-time markets, AI signals, on-chain analytics.">
+    <meta name="description" content="Institutional-grade crypto intelligence and trading terminal. Real-time markets, AI signals, on-chain analytics." />
     <meta name="author" content="ZERØ MERIDIAN" />
+
+    <!-- OG / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ZERØ MERIDIAN — Crypto Intelligence Terminal" />
+    <meta property="og:description" content="Real-time on-chain crypto intelligence. Live prices, derivatives, order book, AI signals." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ZERØ MERIDIAN — Crypto Intelligence Terminal" />
+    <meta name="twitter:description" content="Real-time on-chain crypto intelligence. Live prices, derivatives, order book, AI signals." />
+
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.coingecko.com" />
+    <link rel="preconnect" href="https://stream.binance.com" />
+    <link rel="dns-prefetch" href="https://fstream.binance.com" />
+    <link rel="dns-prefetch" href="https://fapi.binance.com" />
+    <link rel="dns-prefetch" href="https://coin-images.coingecko.com" />
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-    
-    
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9dda8fc8-530b-4529-b4ec-1d53d553187a/id-preview-17a3c628--e663fcd9-3f51-42e3-ba3d-5e0f47386a4f.lovable.app-1772472376773.png">
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9dda8fc8-530b-4529-b4ec-1d53d553187a/id-preview-17a3c628--e663fcd9-3f51-42e3-ba3d-5e0f47386a4f.lovable.app-1772472376773.png">
-    <meta property="og:title" content="ZERØ MERIDIAN — Crypto Intelligence Terminal">
-  <meta name="twitter:title" content="ZERØ MERIDIAN — Crypto Intelligence Terminal">
-  <meta property="og:description" content="Institutional-grade crypto intelligence and trading terminal. Real-time markets, AI signals, on-chain analytics.">
-  <meta name="twitter:description" content="Institutional-grade crypto intelligence and trading terminal. Real-time markets, AI signals, on-chain analytics.">
-</head>
+  </head>
 
   <body>
     <div id="root"></div>
