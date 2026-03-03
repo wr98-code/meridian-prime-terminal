@@ -49,6 +49,7 @@ const Ordinals     = lazy(() => import('./pages/Ordinals'));
 const Ecosystem    = lazy(() => import('./pages/Ecosystem'));
 const Productivity = lazy(() => import('./pages/Productivity'));
 const DevTools     = lazy(() => import('./pages/DevTools'));
+const Portal       = lazy(() => import('./pages/Portal'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -76,9 +77,14 @@ const App = memo(() => (
           <OfflineIndicator />
           <BrowserRouter>
             <ErrorBoundary tileLabel="App">
-              <AppLayout>
-                <Suspense fallback={<PageLoader />}>
-                  <Routes>
+              <Routes>
+                {/* Splash screen — no sidebar layout */}
+                <Route path="/portal" element={<Suspense fallback={<PageLoader />}><Portal /></Suspense>} />
+                <Route path="/intro"  element={<Suspense fallback={<PageLoader />}><Portal /></Suspense>} />
+                <Route path="*" element={
+                  <AppLayout>
+                    <Suspense fallback={<PageLoader />}>
+                      <Routes>
                     {/* Core */}
                     <Route path="/"            element={<Dashboard />} />
                     <Route path="/dashboard"   element={<Dashboard />} />
@@ -128,6 +134,8 @@ const App = memo(() => (
                   </Routes>
                 </Suspense>
               </AppLayout>
+                } />
+              </Routes>
             </ErrorBoundary>
           </BrowserRouter>
         </PWAInstallProvider>
