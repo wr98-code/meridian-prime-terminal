@@ -3,7 +3,8 @@ import { colors, font, shadows, radii } from '@/styles/tokens';
 import { useCrypto } from '@/context/CryptoContext';
 import { formatPrice, formatCompact } from '@/utils/formatters';
 import type { Regime } from '@/types/crypto';
-import { Search, Bell, Settings, Menu } from 'lucide-react';
+import { Search, Bell, Settings, Menu, Download } from 'lucide-react';
+import { usePWAInstall } from '@/context/PWAInstallContext';
 
 interface TopbarProps { onMenuToggle?: () => void; showMenuButton?: boolean; }
 
@@ -26,6 +27,7 @@ const AppTopbar = memo(function AppTopbar({ onMenuToggle, showMenuButton }: Topb
   const btc = useMemo(() => assets.find(a => a.symbol === 'btc'), [assets]);
   const eth = useMemo(() => assets.find(a => a.symbol === 'eth'), [assets]);
   const rc = regimeConfig[regime];
+  const { canInstall, triggerInstall } = usePWAInstall();
 
   const barStyle: CSSProperties = { height: 52, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', background: scrolled ? 'rgba(255,255,255,0.94)' : colors.bgPage, backdropFilter: scrolled ? 'blur(20px)' : undefined, borderBottom: '1px solid ' + colors.borderFaint, fontFamily: font.family, position: 'sticky', top: 0, zIndex: 40, transition: 'background 200ms', gap: 16 };
 
@@ -54,6 +56,12 @@ const AppTopbar = memo(function AppTopbar({ onMenuToggle, showMenuButton }: Topb
           <span style={{ fontSize: 10 }}>{rc.emoji}</span>
           <span style={{ fontSize: 10, fontWeight: 700, color: rc.color, letterSpacing: '0.10em', textTransform: 'uppercase', fontFamily: font.family }}>{rc.label}</span>
         </div>
+        {canInstall && (
+          <button onClick={triggerInstall} aria-label="Install App" title="Install App" style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '4px 10px', cursor: 'pointer', background: colors.accentDim, border: '1px solid ' + colors.borderAccent, borderRadius: radii.badge, fontFamily: font.family }}>
+            <Download size={12} style={{ color: colors.accent }} />
+            <span style={{ fontSize: 9, fontWeight: 700, color: colors.accent, letterSpacing: '0.08em' }}>INSTALL</span>
+          </button>
+        )}
         <button aria-label="Notifications" style={{ padding: 6, cursor: 'pointer', background: 'none', border: 'none', borderRadius: radii.button }}><Bell size={16} style={{ color: colors.textMuted }} /></button>
         <button aria-label="Settings" style={{ padding: 6, cursor: 'pointer', background: 'none', border: 'none', borderRadius: radii.button }}><Settings size={16} style={{ color: colors.textMuted }} /></button>
       </div>

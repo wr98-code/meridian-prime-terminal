@@ -8,7 +8,7 @@ import {
   Coins, RefreshCw, BarChart2, Eye, Flame, DollarSign,
 } from 'lucide-react';
 
-interface NavItem { label: string; path: string; icon: React.ElementType; }
+interface NavItem { label: string; path: string; icon: React.ElementType; badge?: string; }
 interface NavSection { title: string; items: NavItem[]; }
 
 const NAV: NavSection[] = [
@@ -44,7 +44,7 @@ const NAV: NavSection[] = [
   {
     title: 'ON-CHAIN',
     items: [
-      { label: 'On-Chain',     path: '/onchain',     icon: Link2 },
+      { label: 'On-Chain',     path: '/onchain',     icon: Link2, badge: 'LIVE' },
       { label: 'Networks',     path: '/networks',    icon: Network },
       { label: 'Tokens',       path: '/tokens',      icon: Coins },
       { label: 'DeFi',         path: '/defi',        icon: Layers },
@@ -111,7 +111,10 @@ function SidebarItem({ item, active, collapsed, onClick }: { item: NavItem; acti
       aria-label={item.label} aria-current={active ? 'page' : undefined}
       style={{ display: 'flex', alignItems: 'center', gap: 10, height: 38, width: '100%', padding: '0 16px', justifyContent: collapsed ? 'center' : 'flex-start', cursor: 'pointer', transition: 'all 150ms', background: active ? colors.accentDim : hovered ? 'rgba(15,40,100,0.04)' : 'transparent', borderLeft: '2px solid ' + (active ? colors.accent : 'transparent'), border: 'none', transform: hovered && !active ? 'translateX(2px)' : 'none' }}>
       <Icon size={15} style={{ color: active ? colors.accent : hovered ? colors.accent : colors.textMuted, flexShrink: 0, transition: 'color 150ms' }} />
-      {!collapsed && <span style={{ fontSize: 11, fontWeight: active ? 600 : 500, color: active ? colors.accent : colors.textSecondary, fontFamily: font.family, whiteSpace: 'nowrap' }}>{item.label}</span>}
+      {!collapsed && <span style={{ fontSize: 11, fontWeight: active ? 600 : 500, color: active ? colors.accent : colors.textSecondary, fontFamily: font.family, whiteSpace: 'nowrap', flex: 1 }}>{item.label}</span>}
+      {!collapsed && item.badge && (
+        <span style={{ fontSize: 8, fontWeight: 700, color: colors.bull, background: colors.bullDim, padding: '1px 5px', borderRadius: '4px', letterSpacing: '0.08em', fontFamily: font.family }}>{item.badge}</span>
+      )}
     </button>
   );
 }

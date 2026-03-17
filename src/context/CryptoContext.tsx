@@ -88,3 +88,9 @@ export function useCrypto(): CryptoContextValue {
   return useContext(CryptoCtx);
 }
 
+
+// Compatibility stub for hooks migrated from old architecture
+// useCryptoDispatch is a no-op in the React Query architecture
+export function useCryptoDispatch(): (action: unknown) => void {
+  return () => {};
+}
